@@ -19,7 +19,7 @@ Visit: [Spring ECom API Docs](https://spring-ecom-api.herokuapp.com/api/v1/swagg
 2. Spring Boot 1.5.9.RELEASE
 3. SpringFox Swagger 2.7.0 
 4. Spring for MongoDB 
-5. Gradel
+5. Gradle
 
 ## Running
 1. Application available at : http://localhost:8080/api/v1
