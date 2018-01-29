@@ -11,9 +11,12 @@ public interface CategoryRepository extends MongoRepository<Category, String> {
 
     Category save(Category category);
 
+    Category findById(String id);
+
     Long deleteCategoryById(String Id);
 
     List<Category> findAll();
+
 
     List<Category> findCategoriesBySlug(String slug);
 }

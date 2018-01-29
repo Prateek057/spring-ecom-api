@@ -38,6 +38,27 @@ public class CategoryApiController {
     }
 
     /**
+     * GET Method to retrieve category by its id
+     * @param id
+     * @return Category
+     */
+    @RequestMapping(value = "/category/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getCategoryById(@PathVariable String id){
+        return new ResponseEntity<>(categoryService.getCategoryById(id), HttpStatus.OK);
+    }
+
+    /**
+     * GET Method to retrieve category by its slug
+     * @param slug
+     * @return Category
+     */
+    @RequestMapping(value="/category/bySlug/{slug}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Category> getCategoryBySlug(@PathVariable String slug){
+        return categoryService.getCategoriesBySlug(slug);
+    }
+
+
+    /**
      * POST method to create new category
      *
      * @param category
