@@ -30,6 +30,7 @@ public class CategoryAPITests {
         assertThat(response.get("id").textValue()).isEqualTo(id);
     }
 
+
     @Test
     public void whenFindCategoryBySlugLikeThenReturnCategoriesList(){
         String slug="electronics";

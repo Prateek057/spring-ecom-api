@@ -16,6 +16,7 @@ public class ProductAPITests {
     @Autowired
     private TestRestTemplate restTemplate;
 
+
     @Test
     public void whenGetProductsThenReturnProductsList() {
         JsonNode response = this.restTemplate.getForObject("/products", JsonNode.class);
