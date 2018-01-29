@@ -9,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class EcomApplicationTests {
@@ -18,10 +16,23 @@ public class EcomApplicationTests {
 	private TestRestTemplate restTemplate;
 
 	@Test
-	public void productsTest() {
+	public void whenGetProductsThenReturnProductsList() {
 		JsonNode response = this.restTemplate.getForObject("/products", JsonNode.class);
-		System.out.print(response);
-		assertThat(response).isOfAnyClassIn(ArrayList.class);
+		assertThat(response.isArray()).isTrue();
 	}
+
+	@Test
+    public void whenFindByProductSKUThenReturnProduct(){
+	    String sku = "PID12345";
+        JsonNode response = this.restTemplate.getForObject("/product/"+sku, JsonNode.class);
+        assertThat(response.get("sku").textValue()).isEqualTo(sku);
+    }
+
+    @Test
+    public void whenFindProductByCategoryLikeThenReturnProducts(){
+        String category="electronics";
+        JsonNode response = this.restTemplate.getForObject("/products?category="+category, JsonNode.class);
+        assertThat(response.get(0).get("category").textValue()).contains(category);
+    }
 
 }

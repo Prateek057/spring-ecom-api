@@ -15,9 +15,10 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public List<Product> getAllProducts(String category) {
+    public List<Product> getAllProducts(List<String> category) {
         if(category!= null){
-            return productRepository.findAllByCategoryLike(category);
+            //return productRepository.findAllByCategory(category);
+            return productRepository.findAllBy(category);
         }
         return productRepository.findAll();
     }

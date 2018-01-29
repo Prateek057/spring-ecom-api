@@ -20,11 +20,12 @@ public class ProductApiController {
     @Autowired private FixerService fixerService;
 
     @RequestMapping(value = "/products", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> getProducts(@RequestParam(value = "category", required = false) String category,
+    public List<Product> getProducts(@RequestParam(value = "category", required = false) List<String> category,
                                      @RequestParam(value="currency", required = false) String currency
                                      ){
+        System.out.print(category);
         List<Product> products = productService.getAllProducts(category);
-        /*if(currency!= null){
+        if(currency!= null){
             for(Product product: products){
                 String base = product.getPricing().getCurrency();
                 Float rate = fixerService.convertCurrency(base, currency);
@@ -34,7 +35,7 @@ public class ProductApiController {
                 newPricing.setPrice(newPrice);
                 product.setPricing(newPricing);
             }
-        }*/
+        }
         return products;
     }
 

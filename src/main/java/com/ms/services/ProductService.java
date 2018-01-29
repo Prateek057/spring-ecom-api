@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface ProductService {
 
-    List<Product> getAllProducts(String category);
+    List<Product> getAllProducts(List<String> category);
 
     Product getAllProductBySku(String sku);
 
