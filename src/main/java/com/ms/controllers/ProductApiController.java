@@ -24,7 +24,7 @@ public class ProductApiController {
                                      @RequestParam(value="currency", required = false) String currency
                                      ){
         List<Product> products = productService.getAllProducts(category);
-        if(currency!= null){
+        /*if(currency!= null){
             for(Product product: products){
                 String base = product.getPricing().getCurrency();
                 Float rate = fixerService.convertCurrency(base, currency);
@@ -34,7 +34,7 @@ public class ProductApiController {
                 newPricing.setPrice(newPrice);
                 product.setPricing(newPricing);
             }
-        }
+        }*/
         return products;
     }
 
