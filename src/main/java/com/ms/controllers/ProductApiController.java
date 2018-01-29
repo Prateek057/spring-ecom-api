@@ -1,7 +1,6 @@
 package com.ms.controllers;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.ms.models.Pricing;
 import com.ms.models.Product;
 import com.ms.models.Attribute;
@@ -51,7 +50,7 @@ public class ProductApiController {
 
     @RequestMapping(value="/product/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> createProduct(@RequestBody Product product){
-        return new ResponseEntity<Product>(productService.createOrUpdateProduct(product), HttpStatus.CREATED);
+        return new ResponseEntity<>(productService.createOrUpdateProduct(product), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/product/delete/{product_id}", method = RequestMethod.DELETE )

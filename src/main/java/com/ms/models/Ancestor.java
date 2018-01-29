@@ -2,7 +2,7 @@ package com.ms.models;
 
 import org.springframework.data.annotation.Id;
 
-public class Ancestor {
+class Ancestor {
 
     @Id
     private String _id;

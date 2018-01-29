@@ -15,31 +15,6 @@ public class Category {
     private String slug;
     private List<Ancestor> ancestors;
 
-    public String getParent() {
-        return parent;
-    }
-
-    public void setParent(String parent) {
-        this.parent = parent;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
-
-
-
-    public List<Ancestor> getAncestors() {
-        return ancestors;
-    }
-
-    public void setAncestors(List<Ancestor> ancestors) {
-        this.ancestors = ancestors;
-    }
 
     public String getId() {
         return id;
@@ -49,11 +24,4 @@ public class Category {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

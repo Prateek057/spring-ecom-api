@@ -24,7 +24,7 @@ public class CategoryApiController {
 
     @RequestMapping(value = "/category/create", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Category> createCategory(@RequestBody Category category){
-        return new ResponseEntity<Category>(categoryService.createOrUpdateCategory(category), HttpStatus.CREATED);
+        return new ResponseEntity<>(categoryService.createOrUpdateCategory(category), HttpStatus.CREATED);
     }
 
     @RequestMapping(value="/category/delete", method=RequestMethod.DELETE)

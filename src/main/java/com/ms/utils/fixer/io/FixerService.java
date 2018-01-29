@@ -9,8 +9,7 @@ public class FixerService {
     public JsonNode getLatestConversionRates(){
         RestTemplate restTemplate = new RestTemplate();
         String fixerUrl = "https://api.fixer.io/latest?base=EUR";
-        JsonNode response = restTemplate.getForObject(fixerUrl, JsonNode.class);
-        return response;
+        return restTemplate.getForObject(fixerUrl, JsonNode.class);
     }
 
     public Float convertCurrency(String fromCurrency, String toCurrency){
