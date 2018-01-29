@@ -1,3 +1,13 @@
+/**
+ *
+ * @file CategoryApiController.java
+ * @author Prateek Bagrecha
+ * @description Spring ECommerce Endpoint APIs for Category Catalog
+ *      - GET /categories - gets all categories
+ * 		- POST /category/create - creates a category
+ * 	    - DELETE /category/delete/{id} - delete a category by its id
+ * 	    - POST /category/update - updates an existing category
+ */
 package com.ms.controllers;
 
 import com.ms.models.Category;
@@ -10,30 +20,53 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 public class CategoryApiController {
 
     @Autowired
     private CategoryService categoryService;
 
-
-    @RequestMapping(value= "/categories", method = RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
-    public List<Category> getCategories(){
+    /**
+     * GET Method mapping to retrieve all categories
+     *
+     * @return List<Category>
+     */
+    @RequestMapping(value = "/categories", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Category> getCategories() {
         return categoryService.getAllCategories();
     }
 
-    @RequestMapping(value = "/category/create", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Category> createCategory(@RequestBody Category category){
+    /**
+     * POST method to create new category
+     *
+     * @param category
+     * @return Category wrapped in ResponseEntity
+     */
+    @RequestMapping(value = "/category/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         return new ResponseEntity<>(categoryService.createOrUpdateCategory(category), HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="/category/delete", method=RequestMethod.DELETE)
-    public ResponseEntity deleteCategory(@PathVariable String id ){
+    /**
+     * DELETE method to delete an existing category
+     *
+     * @param id
+     * @return ResponseEntity with no of documents deleted
+     */
+    @RequestMapping(value = "/category/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteCategory(@PathVariable String id) {
         return new ResponseEntity<>(categoryService.deleteCategoryById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value="/category/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Category updateCategory(@RequestBody Category category){
+    /**
+     * Method to update an existing category
+     *
+     * @param category
+     * @return Category : Updated document
+     */
+    @RequestMapping(value = "/category/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Category updateCategory(@RequestBody Category category) {
         return categoryService.createOrUpdateCategory(category);
     }
 }
