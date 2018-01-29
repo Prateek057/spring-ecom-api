@@ -1,6 +1,8 @@
 # spring-ecom-api
 Sample Spring-MongoDB ECommerce API Server. 
-Server should be run using gradle using IDE of your choice
+
+
+Visit: [Spring ECom API Docs](https://spring-ecom-api.herokuapp.com/api/v1/swagger-ui.html)
 
 ## Requirements
 1. Database Schema: Create schema to store product and categories. (Getting full category path for the products might be a future requirement)
@@ -17,6 +19,7 @@ Server should be run using gradle using IDE of your choice
 2. Spring Boot 1.5.9.RELEASE
 3. SpringFox Swagger 2.7.0 
 4. Spring for MongoDB 
+5. Gradel
 
 ## Running
 1. Application available at : http://localhost:8080/api/v1
